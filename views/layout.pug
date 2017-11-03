@@ -49,9 +49,14 @@ html
     .content
       block content
         h1 This is not good ⚠️
-        
-    block footer
-     p ©️ Chad Trikyas Mooney
+    .footer
+      block footer
+        .single
+          .single__hero
+            .single__location
+              p Built by 👇 
+              strong.button Chad Trikyas Mooney ©️ 2017
+              p Trikyas™️
 
     block scripts
       script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)

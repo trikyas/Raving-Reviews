@@ -643,11 +643,11 @@ label {
       border-right-color: rgba(0, 0, 0, 0.05);
       background: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%) fixed; }
       .nav__link:hover svg, .nav__link--active svg {
-        -ms-transform: scale(1.2);
-            transform: scale(1.2); }
+        -ms-transform: scale(1.25);
+            transform: scale(1.25); }
     .nav__link--logo:hover svg {
-      -ms-transform: none;
-          transform: none; }
+      -ms-transform: scale(1.25);
+          transform: scale(1.25); }
     .nav__link--logo svg {
       width: 200px;
       margin: 0; }

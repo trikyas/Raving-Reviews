@@ -1,14 +1,27 @@
 mixin storeForm(store = {})
-  form(action="/add" method="post" class="card")
+  form(action=`/add/${store._id || ''}` method="post" class="card" enctype="multipart/form-data")
     label(for="name") Name
-    input(type="text" name="name")
+    input(type="text" name="name" value=store.name)
     label(for="description") Description
-    input(type="text" name="description")
-    - const choices = ['Wifi', 'Licenced', 'Family Friendly', 'Entertainment', 'Take Away', 'Open Late']
+    textarea(type="text" name="description")= store.description
+    label(for="photo") Photo
+    input(type="file" name="photo" id="photo" accept="image/gif,image/png, image/jpeg")
+    if store.photo
+      img(src=`/uploads/${store.photo}`, alt=store.name width=200)
+    //- address for long and lat 
+    label(for="address") Address
+    input(type="text" id="address" name="location[address]" value=(store.location && store.location.address))
+    label(for="lng") Longitude
+    input(type="text" id="lng" name="location[coordinates][0]" value=(store.location && store.location.coordinates[0]))
+    label(for="lat") Latitude
+    input(type="text" id="lat" name="location[coordinates][1]" value=(store.location && store.location.coordinates[1]))
+      
+    - const choices = [ '#ChefMode', '#Foodie', '#CleanEating', '#ThisIsWhyImFat', '#OnMyTable', '#Fresh', '#EyesToBigForMyBelly', '#Food', '#AllYouCanEat', '#Yummy', '#Vegetarian', '#Wine', '#SeaFood', '#Beer', '#Pasta', '#Pizza', '#Nom', '#Chinese', '#Cocktails', '#HappyHour', '#Italian', '#Coffee', '#FamilyFriendly', '#Fun', '#Love', '#Mexican', '#TakeAway', '#Beach', '#Sunset', '#Relaxing', '#Home', '#Dessert', '#GlutenFree', '#AlmondMilk', '#BBQ', '#FishAndChips']
+    - const tags = store.tags || []
     ul.tags
       each choice in choices
         .tag.tag__choice
-          input(type="checkbox" id=choice value=choices name="tags")
+          input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
           label(for=choice) #{choice}
     input(type="submit" value="Save Now →" class="button")
     
