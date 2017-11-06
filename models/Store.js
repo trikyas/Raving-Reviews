@@ -35,7 +35,12 @@ const storeSchema = new mongoose.Schema({
       required: 'Come on mate. Address!'
     }
   },
-  photo: String
+  photo: String,
+  author: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: 'You have to supply an Creator Name'
+  }
 });
 
 storeSchema.pre('save', async function(next) {

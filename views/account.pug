@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  .inner
+    h2 Edit your account
+    form.form(action="/account" method="post")
+      label(for="name") Name
+      input(type="text" name="name" value=user.name)
+      label(for="email") Name
+      input(type="email" name="email" value=user.email)
+      label(for="empty")
+      input.button(type="submit" name="submit" value="Save Now →")
+      label(for="empty")
+    label(for="empty")

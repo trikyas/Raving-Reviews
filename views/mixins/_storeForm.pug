@@ -16,7 +16,7 @@ mixin storeForm(store = {})
     label(for="lat") Latitude
     input(type="text" id="lat" name="location[coordinates][1]" value=(store.location && store.location.coordinates[1]))
       
-    - const choices = [ '#ChefMode', '#Foodie', '#CleanEating', '#ThisIsWhyImFat', '#OnMyTable', '#Fresh', '#EyesToBigForMyBelly', '#Food', '#AllYouCanEat', '#Yummy', '#Vegetarian', '#Wine', '#SeaFood', '#Beer', '#Pasta', '#Pizza', '#Nom', '#Chinese', '#Cocktails', '#HappyHour', '#Italian', '#Coffee', '#FamilyFriendly', '#Fun', '#Love', '#Mexican', '#TakeAway', '#Beach', '#Sunset', '#Relaxing', '#Home', '#Dessert', '#GlutenFree', '#AlmondMilk', '#BBQ', '#FishAndChips']
+    - const choices = [ 'ChefMode', 'Foodie', 'CleanEating', 'ThisIsWhyImFat', 'OnMyTable', 'Fresh', 'EyesToBigForMyBelly', 'Food', 'AllYouCanEat', 'Yummy', 'Vegetarian', 'Wine', 'SeaFood', 'Beer', 'Pasta', 'Pizza', 'Nom', 'Chinese', 'Cocktails', 'HappyHour', 'Italian', 'Coffee', 'FamilyFriendly', 'Fun', 'Love', 'Mexican', 'TakeAway', 'Beach', 'Sunset', 'Relaxing', 'Home', 'Dessert', 'GlutenFree', 'AlmondMilk', 'BBQ', 'FishAndChips']
     - const tags = store.tags || []
     ul.tags
       each choice in choices

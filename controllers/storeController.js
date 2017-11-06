@@ -3,6 +3,7 @@ const Store = mongoose.model('Store');
 const multer = require('multer');
 const jimp = require('jimp');
 const uuid = require('uuid');
+
 const multerOptions = {
   storage: multer.memoryStorage(),
   fileFilter(req, file, next) {
@@ -35,17 +36,24 @@ exports.resize = async (req, res, next) => {
 }
 
 exports.createStore = async (req, res) => {
+  req.body.author = req.user._id;
   const store = await (new Store(req.body)).save();
   req.flash('success', `Thank you for creating: ${store.name}. We\'d love you to leave a review.`)
-  res.redirect(`/store/${store.slug}`);
+  res.redirect(`/stores/${store.slug}`);
 };
 exports.getStores = async (req, res) => {
   const stores = await Store.find();
-  res.render('stores', { title: 'Raving Reviews!', stores: stores });
+  res.render('stores', { title: 'Raving Reviews!', stores });
+};
+const confirmOwner = (store, user) => {
+  if (!store.author.equals(user._id)) {
+    throw Error('🙅‍♂️ You must be the owner in order to edit it!');
+  }
 };
 exports.editStore = async (req, res) => {
   const store = await Store.findOne({ _id: req.params.id });
-  res.render('editStore', { title: `Edit ${store.name}`, store: store})
+  confirmOwner(store, req.user);
+  res.render('editStore', { title: `Edit ${store.name}`, store})
 };
 exports.updateStore = async (req, res) => {
   req.body.location.type = 'Point';
@@ -56,14 +64,21 @@ exports.updateStore = async (req, res) => {
   req.flash('success', `Successfully updated <strong>${store.name}</strong>. <a href="/stores/${store.slug}">View Store Now →</a>`);
   res.redirect(`/stores/${store._id}/edit`);
 };
-exports.getStoreBySlug = async (req, res, next) => {
-  const store = await Store.findOne({ slug: req.params.slug });
-  if(!store) return next();
-  res.render('store', { store, title: store.name });
+exports.getStoresBySlug = async (req, res, next) => {
+  const store = await Store.findOne({
+    slug: req.params.slug }).populate('author');
+  if (!store) return next();
+  res.render('store', { store, title: store.name});
 };
 
 exports.getStoresByTag = async (req, res) => {
-  const tags = await Store.getTagsList();
   const tag = req.params.tag;
-  res.render('tag', { tags, title: 'Tags', tag});
+  const tagQuery = tag || { $exists: true };
+
+  const tagsPromise = Store.getTagsList();
+  const storesPromise = Store.find({ tags: tagQuery });
+  const [tags, stores] = await Promise.all([tagsPromise, storesPromise]);
+
+
+  res.render('tag', { tags, title: 'Tags', tag, stores });
 };
