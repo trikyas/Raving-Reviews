@@ -63,7 +63,7 @@ exports.getStores = async (req, res) => {
     res.redirect(`/stores/page/${pages}`);
     return;
   }
-  res.render('stores', { title: 'Raving Reviews!', stores, page, pages, count });
+  res.render('stores', { title: 'Rating Reviews!', stores, page, pages, count });
 };
 const confirmOwner = (store, user) => {
   if (!store.author.equals(user._id)) {
