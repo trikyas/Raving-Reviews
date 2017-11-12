@@ -24,7 +24,7 @@ exports.ohShit = (req, res, next) => {
   res.render('4oh4');
 };
 exports.addStore = (req, res) => {
-  res.render('editStore', { title: 'Make a Rating Review!'});
+  res.render('editStore', { title: 'Make your Raving Review!'});
 };
 exports.upload = multer(multerOptions).single('photo');
 exports.resize = async (req, res, next) => {
