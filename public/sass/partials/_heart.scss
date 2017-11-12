@@ -5,7 +5,7 @@
     outline: 0;
     position: relative;
     &:after {
-      content: '♥️';
+      content: '❤️';
       font-size: 20px;
       position: absolute;
       opacity: 0;
@@ -22,7 +22,7 @@
     }
     &--float {
       &:after {
-        animation: fly 2.5s 1 ease-out;
+        animation: fly 2.5s ease-out;
       }
     }
   }

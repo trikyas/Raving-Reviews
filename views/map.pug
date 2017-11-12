@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  .inner
+    h2= title
+    .map
+      .autocomplete
+        input.autocomplete__input(type="text" placeholder="What are you looking for?" name="geolocate")
+      #map
+        p This website was built by 👉 Chad Trikyas Mooney
+    label(for="empty")

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .inner
+    h2 Best #{stores.length} Raving Reviews
+    table.table
+      thead
+        td.button Picture
+        td.button Ranked
+        td.button Name
+        td.button Reviews
+        td.button Average Rating
+      each store, i in stores
+        //- I might change the #1 pos: to a highlighted colour ~Trikyas
+        tr
+          td
+            a(href=`/stores/${store.slug}`)
+              img(width=200 src=`/uploads/${store.photo || 'store.png'}` alt=store.name)
+          td #{i + 1}
+          td: a(href=`/store/${store.slug}`)= store.name
+          td= store.reviews.length
+          td #{Math.round(store.averageRating * 10) / 10} out of 5 ⭐'s
+    label(for="empty")

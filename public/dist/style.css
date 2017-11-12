@@ -17,7 +17,14 @@ body {
   margin: 0 auto; }
   @media all and (max-width: 900px) {
     .inner {
-      padding: 2rem; } }
+      padding: -.1rem; } }
+
+.trikyas__font {
+  color: #ffffff;
+  padding-left: 4em;
+  font-family: 'Panama';
+  font-weight: 600;
+  filter: drop-shadow(5px 5px 0 #303030); }
 
 html {
   box-sizing: border-box; }
@@ -695,7 +702,7 @@ label {
     .nav__link--logo svg {
       width: 100%; }
   .heart-count:before {
-    content: '\2665\FE0F';
+    content: '\2764\FE0F';
     margin-right: 1rem; } }
 
 .table {
@@ -899,7 +906,8 @@ label {
   display: inline-block;
   float: right;
   position: relative;
-  padding: 1rem; }
+  padding: 1rem;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.15); }
   @media all and (max-width: 850px) {
     .single__location {
       margin-right: 0; } }
@@ -910,7 +918,7 @@ label {
   outline: 0;
   position: relative; }
   .heart__button:after {
-    content: '\2665\FE0F';
+    content: '\2764\FE0F';
     font-size: 20px;
     position: absolute;
     opacity: 0;
@@ -921,7 +929,7 @@ label {
   .heart__button--hearted svg {
     fill: red; }
   .heart__button--float:after {
-    animation: fly 2.5s 1 ease-out; }
+    animation: fly 2.5s ease-out; }
 
 @keyframes fly {
   0% {

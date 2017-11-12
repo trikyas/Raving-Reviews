@@ -5,7 +5,7 @@ mixin storeForm(store = {})
     label(for="description") Description
     textarea(type="text" name="description")= store.description
     label(for="photo") Photo
-    input(type="file" name="photo" id="photo" accept="image/gif,image/png, image/jpeg")
+    input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
     if store.photo
       img(src=`/uploads/${store.photo}`, alt=store.name width=200)
     //- address for long and lat 
@@ -15,7 +15,7 @@ mixin storeForm(store = {})
     input(type="text" id="lng" name="location[coordinates][0]" value=(store.location && store.location.coordinates[0]))
     label(for="lat") Latitude
     input(type="text" id="lat" name="location[coordinates][1]" value=(store.location && store.location.coordinates[1]))
-      
+      //- TODO create more global categories
     - const choices = [ 'ChefMode', 'Foodie', 'CleanEating', 'ThisIsWhyImFat', 'OnMyTable', 'Fresh', 'EyesToBigForMyBelly', 'Food', 'AllYouCanEat', 'Yummy', 'Vegetarian', 'Wine', 'SeaFood', 'Beer', 'Pasta', 'Pizza', 'Nom', 'Chinese', 'Cocktails', 'HappyHour', 'Italian', 'Coffee', 'FamilyFriendly', 'Fun', 'Love', 'Mexican', 'TakeAway', 'Beach', 'Sunset', 'Relaxing', 'Home', 'Dessert', 'GlutenFree', 'AlmondMilk', 'BBQ', 'FishAndChips']
     - const tags = store.tags || []
     ul.tags

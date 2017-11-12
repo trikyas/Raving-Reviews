@@ -1,0 +1,17 @@
+extends layout
+include mixins/_reviewForm
+include mixins/_review
+
+block content
+  .single
+    .single__hero
+      img.single__image(src='/uploads/nodding-towel.gif')
+      h2.title.title--single.button Fail!
+  .single__details.inner
+    h1.title.title--single.button 4 OH 4
+    p.nav__link--active.link.trikyas__font Strange really?
+      br
+      | The page was here  #{h.moment().startOf('Hour').fromNow()} !!!
+      br
+      | Now, it's just awkward... 
+    a.single__location(href='/stores') Chad Trikyas Mooney

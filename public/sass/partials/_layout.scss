@@ -18,6 +18,13 @@ body {
   max-width:900px;
   margin: 0 auto;
   @media all and (max-width: 900px) {
-    padding: 2rem;
+    padding: -.1rem;
   }
+}
+.trikyas__font {
+  color: #ffffff;
+  padding-left: 4em;
+  font-family: 'Panama';
+  font-weight: 600;
+  filter: drop-shadow(5px 5px 0 $black);
 }

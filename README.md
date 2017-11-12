@@ -1,8 +1,6 @@
 ## What is this?
 
-This `Raving Reviews`
-
-I followed a tutorial by Wes Bos.
+Just you wait folks!
 
 ## Sample Data
 
