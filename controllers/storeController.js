@@ -20,7 +20,7 @@ exports.homePage = (req, res) => {
   res.render('index');
 };
 
-exports.ohShit = (req, res, next) => {
+exports.ohShit = (req, res) => {
   res.render('4oh4');
 };
 exports.addStore = (req, res) => {
