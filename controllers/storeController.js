@@ -24,7 +24,7 @@ exports.ohShit = (req, res) => {
   res.render('4oh4');
 };
 exports.addStore = (req, res) => {
-  res.render('editStore', { title: 'Make your Raving Review!'});
+  res.render('editStore', { title: 'Make your Rating Review!'});
 };
 exports.upload = multer(multerOptions).single('photo');
 exports.resize = async (req, res, next) => {
@@ -63,7 +63,7 @@ exports.getStores = async (req, res) => {
     res.redirect(`/stores/page/${pages}`);
     return;
   }
-  res.render('stores', { title: 'Raving Reviews!', stores, page, pages, count });
+  res.render('stores', { title: 'Rating Reviews!', stores, page, pages, count });
 };
 const confirmOwner = (store, user) => {
   if (!store.author.equals(user._id)) {
@@ -117,7 +117,7 @@ exports.searchStores = async (req, res) => {
     score: { $meta: 'textScore' }
   })
   // limit to only 5 results
-  .limit(5);
+  .limit(6);
   res.json(stores);
 };
 exports.mapStores = async (req, res) => {
